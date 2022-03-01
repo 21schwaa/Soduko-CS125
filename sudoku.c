@@ -8,7 +8,7 @@ void checkRow() {
 	
 }
 
-void checkcolumn() {
+void checkColumn() {
 
 }
 
