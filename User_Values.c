@@ -3,6 +3,7 @@
 int main(){
 
 char userInputRow, userInputCol;
+int userNumber;
 
 printf("Where would you like to Input?\n");
 printf("Please enter a ROW:A-I:");
