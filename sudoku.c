@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void main() {
-	TEST
+	TEST	XT1
 }
 
 void checkRow() {
