@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <stdbool.h>
 
 int rows = 9;
 int columns = 9;
+int point[2];
 int board[9][9] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -17,31 +19,51 @@ int board[9][9] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
 
 void printBoard(); // Function used to print the entire board and returns nothing
 void createRandBoard();	// Function used to create the intial fully solved board and returns nothing
-int checkNinth(); // Function used to check what ninth the x and y coordinates are in and returns the ninth as an integer
-void randPoint(int* row, int* col); // Function that uses pointers to assign a random point on the board
+int checkNinth(int row, int col); // Function used to check what ninth the x and y coordinates are in and returns the ninth as an integer
+int randPoint(); // Function assigns a random point on the board
 bool checkNinthForNum(int ninth, int num); // Function used to check if the num is in the ninth and returns a bool
 bool checkRowForNum(int row, int num); // Function used to check if the num is in the row and returns a bool
 bool checkColForNum(int col, int num); // Function used to check if the num is in the column and returns a bool
 bool checkCross(); // Function used to call all the functions needed to check if a number is valid and returns a bool
 
-void main() {
+int main() {
 	srand(time(NULL));
-	//createRandBoard();
+	createRandBoard();
+	printf("Passed createRandBoard\n");
 	printBoard();
+	return 0;
 }
 
 void createRandBoard() {
-	
+	int row = point[0];
+	int col = point[1];
+	int numOnes = 0;
+	while(numOnes != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 1)) {
+			board[row][col] = 1;
+			numOnes ++;
+		}
+		printf("While Loop\n");
+	}
 }
 
 bool checkCross(int ninth, int row, int col, int num) {
+	printf("checkCross\n");
 	if(checkNinthForNum(ninth, num) && checkRowForNum(row, num) && checkColForNum(col, num)) {
+		printf(" checkNinthForNum %d\n", checkNinthForNum(ninth, num));
+		printf(" checkRowForNum   %d\n", checkRowForNum(row, num));
+		printf(" checkColForNum   %d\n", checkColForNum(col, num));
 		return true;
 	}
 	return false;
 }
 
 bool checkNinthForNum(int ninth, int num) {
+	printf("checkNinthForNum\n");
 	int startRow, endRow, startCol, endCol;
 	switch(ninth) { // Assigns the ninth to its cordinates on the board
 		case 1 : 
@@ -54,7 +76,7 @@ bool checkNinthForNum(int ninth, int num) {
 			startRow = 3;
 			endRow = 5;
 			startCol = 0;
-			endcol = 2;
+			endCol = 2;
 			break;
 		case 3 :
 			startRow = 6;
@@ -97,20 +119,22 @@ bool checkNinthForNum(int ninth, int num) {
 			endRow = 8;
 			startCol = 6;
 			endCol = 8;
+			for(startRow = 6; startRow <= endRow; startRow ++) {
+				for(startCol; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 	}
 
-	for(startRow; startRow <= endRow; startRow ++) {
-		for(startCol; startCol <= endCol; startCol ++){
-			if(num == board[startRow][startCol]) {
-				return false;
-			}
-		}
-	}
+	
 	return true;
 }
 
 bool checkRowForNum(int row, int num) {
+	printf("checkRowForNum\n");
 	for(int i = 0; i <= 8; i ++) {
 		if(board[row][i] == num) {
 			return false;
@@ -120,6 +144,7 @@ bool checkRowForNum(int row, int num) {
 }
 
 bool checkColForNum(int col, int num) {
+	printf("checkColForNum\n");
 	for(int i = 0; i <= 8; i ++) {
 		if(board[i][col] == num) {
 			return false;
@@ -129,6 +154,7 @@ bool checkColForNum(int col, int num) {
 }
 
 int checkNinth(int row, int col) {
+	printf("checkNinth\n");
 	if((row >= 0 && row <=2) && (col >= 0 && col <= 2)) {
 		//printf("1\n");
 		return 1;
@@ -165,11 +191,13 @@ int checkNinth(int row, int col) {
 		//printf("9\n");
 		return 9;
 	}
+	return 0;
 }
 
-void randPoint(int* row, int* col) {
-	*row = rand() % 9;
-	*col = rand() % 9;
+int randPoint() {
+	printf("randPoint\n");
+	point[0] = rand() % 9;
+	point[1] = rand() % 9;
 }
 
 void printBoard() {
@@ -186,7 +214,7 @@ void printBoard() {
         	printf("%d", x + 1);
         	for(y = 0 ; y < columns ; y++){
         		if(board[x][y] == 0) {
-        			printf("|  ");
+        			printf("|   ");
         		}
         		else {
         			printf("| %d ", board[x][y]);
