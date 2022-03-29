@@ -2,109 +2,81 @@
 
 int main(){
 
-char userInputRow, userInputCol;
-int userNumber;
-
+char userInputRow;
+int userNumber, userInputCol, place;
+place=0;
 printf("Where would you like to Input?\n");
 printf("Please enter a ROW:A-I:");
 scanf("%c", &userInputRow);
 printf("Please enter a COL:1-9:");
-scnaf("%c", &userInputCol);
+scnaf("%d", &userInputCol);
 printf("What Number would you like to enter?");
 scanf("%d", entryNumber);
-	
-if (userInputRow == 'A'){
-	if (userInputCol == 1){
-		board[0][1]=entryNumber;
-	}
-	if (userInputCol == 2){
-		board[0][2]=entryNumber;
-	}
-	if (userInputCol == 3){
-		board[0][3]=entryNumber;
-	}
-	if (userInputCol == 4){
-		board[0][4]=entryNumber;
-	}
-	if (userInputCol == 5){
-		board[0][5]=entryNumber;
-	}
-	if (userInputCol == 6){
-		board[0][6]=entryNumber;
-	}
-	if (userInputCol == 7){
-		board[0][7]=entryNumber;
-	}
-	if (userInputCol == 8){
-		board[0][8]=entryNumber;
-	}
-	if (userInputCol == 9){
-		board[0][9]=entryNumber;
-	
+
+switch(UserInputRow){
+	case 'A':
+		place=1;
+		break;
+	case 'B':
+		place=2;
+		break;
+	case 'C':
+		place=3;
+		break;
+	case 'D':
+		place=4;
+		break;
+	case 'F':
+		place=5;
+		break;
+	case 'E':
+		place=6;
+		break;
+	case 'G':
+		place=7;
+		break;
+	case 'H':
+		place=8;
+		break;
+	case 'I':
+		place=9;
+		break;
+	default:
+		printf("Invalid Response");
 }
-if (userInputRow == 'B'){
-	if (userInputCol == 1){
-		board[1][1]=entryNumber;
-	}
-	if (userInputCol == 2){
-		board[1][2]=entryNumber;
-	}
-	if (userInputCol == 3){
-		board[1][3]=entryNumber;
-	}
-	if (userInputCol == 4){
-		board[1][4]=entryNumber;
-	}
-	if (userInputCol == 5){
-		board[1][5]=entryNumber;
-	}
-	if (userInputCol == 6){
-		board[1][6]=entryNumber;
-	}
-	if (userInputCol == 7){
-		board[1][7]=entryNumber;
-	}
-	if (userInputCol == 8){
-		board[1][8]=entryNumber;
-	}
-	if (userInputCol == 9){
-		board[1][9]=entryNumber;
-	
+		
+  
+
+if (userInputCol == 1){
+	board[place][1]=entryNumber;
 }
-if (userInputRow == 'C'){
-	if (userInputCol == 1){
-		board[2][1]=entryNumber;
-	}
-	if (userInputCol == 2){
-		board[2][2]=entryNumber;
-	}
-	if (userInputCol == 3){
-		board[2][3]=entryNumber;
-	}
-	if (userInputCol == 4){
-		board[2][4]=entryNumber;
-	}
-	if (userInputCol == 5){
-		board[2][5]=entryNumber;
+if (userInputCol == 2){
+	board[place][2]=entryNumber;
+}
+if (userInputCol == 3){
+	board[place][3]=entryNumber;
+}
+if (userInputCol == 4){
+	board[place][4]=entryNumber;
+}
+if (userInputCol == 5){
+	board[place][5]=entryNumber;
+}
 	
-	if (userInputCol == 6){
-		board[2][6]=entryNumber;
-	}
-	if (userInputCol == 7){
-		board[2][7]=entryNumber;
-	}
-	if (userInputCol == 8){
-		board[2][8]=entryNumber;
-	}
-	if (userInputCol == 9){
-		board[2][9]=entryNumber;
-	
+if (userInputCol == 6){
+	board[place][6]=entryNumber;
+}
+if (userInputCol == 7){
+	board[place][7]=entryNumber;
+}
+if (userInputCol == 8){
+	board[place][8]=entryNumber;
+}
+if (userInputCol == 9){
+	board[place][9]=entryNumber;
 }
 	
 
-	
-	
-	
 	
 	
 	
