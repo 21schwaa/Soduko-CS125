@@ -38,17 +38,132 @@ void createRandBoard() {
 	int row = point[0];
 	int col = point[1];
 	int numOnes = 0;
+	int numTwos = 0;
+	int numThrees = 0;
+	int numFours = 0;
+	int numFives = 0;
+	int numSixes = 0;
+	int numSevens = 0;
+	int numEights = 0;
+	int numNines = 0;
 	while(numOnes != 9) {
 		randPoint();
 		row = point[0];
 		col = point[1];
 		printf("Rand Point: %d,%d\n", row, col);
-		if(checkCross(checkNinth(row, col), row, col, 1)) {
-			board[row][col] = 1;
-			numOnes ++;
+		if(board[row][col] != 1) {
+			if(checkCross(checkNinth(row, col), row, col, 1)) {
+				board[row][col] = 1;
+				numOnes ++;
+			}
 		}
 		printf("While Loop\n");
 	}
+	while(numTwos != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 2)) {
+			board[row][col] = 2;
+			numTwos ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numThrees != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 3)) {
+			board[row][col] = 3;
+			numThrees ++;
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numFours != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 4)) {
+			board[row][col] = 4;
+			numFours ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numFives != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 5)) {
+			board[row][col] = 5;
+			numFives ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numSixes != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 6)) {
+			board[row][col] = 6;
+			numSixes ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numSevens != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 7)) {
+			board[row][col] = 7;
+			numSevens ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numEights != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 8)) {
+			board[row][col] = 8;
+			numEights ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	while(numNines != 9) {
+		randPoint();
+		row = point[0];
+		col = point[1];
+		printf("Rand Point: %d,%d\n", row, col);
+		if(checkCross(checkNinth(row, col), row, col, 9)) {
+			board[row][col] = 9;
+			numNines ++;
+			printf("if statement 2");
+		}
+		printf("While Loop2\n");
+		printBoard();
+	}
+	
+	printf("Num Ones: %d\n", numOnes);
 }
 
 bool checkCross(int ninth, int row, int col, int num) {
@@ -71,48 +186,104 @@ bool checkNinthForNum(int ninth, int num) {
 			endRow = 2;
 			startCol = 0;
 			endCol = 2;
+			for(startRow = 0; startRow <= endRow; startRow ++) {
+				for(startCol = 0; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 2 : 
 			startRow = 3;
 			endRow = 5;
 			startCol = 0;
 			endCol = 2;
+			for(startRow = 3; startRow <= endRow; startRow ++) {
+				for(startCol = 0; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 3 :
 			startRow = 6;
 			endRow = 8;
 			startCol = 0;
 			endCol = 2;
+			for(startRow = 6; startRow <= endRow; startRow ++) {
+				for(startCol = 0; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 4 :
 			startRow = 0;
 			endRow = 2;
 			startCol = 3;
 			endCol = 5;
+			for(startRow = 0; startRow <= endRow; startRow ++) {
+				for(startCol = 2; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 5 :
 			startRow = 3;
 			endRow = 5;
 			startCol = 3;
 			endCol = 5;
+			for(startRow = 3; startRow <= endRow; startRow ++) {
+				for(startCol = 3; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 6 :
 			startRow = 6;
 			endRow = 8;
 			startCol = 3;
 			endCol = 5;
+			for(startRow = 6; startRow <= endRow; startRow ++) {
+				for(startCol = 3; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 7 :
 			startRow = 0;
 			endRow = 2;
 			startCol = 6;
 			endCol = 8;
+			for(startRow = 0; startRow <= endRow; startRow ++) {
+				for(startCol = 6; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 8 :
 			startRow = 3;
 			endRow = 5;
 			startCol = 6;
 			endCol = 8;
+			for(startRow = 3; startRow <= endRow; startRow ++) {
+				for(startCol = 6; startCol <= endCol; startCol ++){
+					if(num == board[startRow][startCol]) {
+						return false;
+					}
+				}
+			}
 			break;
 		case 9 :
 			startRow = 6;
@@ -120,7 +291,7 @@ bool checkNinthForNum(int ninth, int num) {
 			startCol = 6;
 			endCol = 8;
 			for(startRow = 6; startRow <= endRow; startRow ++) {
-				for(startCol; startCol <= endCol; startCol ++){
+				for(startCol = 6; startCol <= endCol; startCol ++){
 					if(num == board[startRow][startCol]) {
 						return false;
 					}
