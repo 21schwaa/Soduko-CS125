@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(){
-
+int userChange(){
 char userInputRow;
 int userNumber, userInputCol, place;
 place=0;
@@ -75,9 +74,14 @@ if (userInputCol == 8){
 if (userInputCol == 9){
 	board[place][9]=entryNumber;
 }
-	
 
 	
-	
-	
+
+}
+
+
+
+
+int main(){
+userChange();	
 }
